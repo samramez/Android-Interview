@@ -1,10 +1,43 @@
-<RelativeLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.apppartner.androidprogrammertest.LoginActivity">
+    android:orientation="vertical"
+    android:gravity="center"
+    tools:context="com.apppartner.androidprogrammertest.LoginActivity"
+    android:background="@drawable/bg_login">
 
-    <include layout="@layout/toolbar"/>
 
-</RelativeLayout>
+
+    <!--<include layout="@layout/toolbar"/>-->
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/editText"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/graphic_input"
+        android:layout_marginBottom="20dp"
+        android:text="  username"
+        android:textSize="30dp"
+        />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:ems="10"
+        android:id="@+id/editText2"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/graphic_input"
+        android:layout_marginBottom="20dp"
+/>
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageButton"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/btn_login" />
+</LinearLayout>

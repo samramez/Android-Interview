@@ -3,6 +3,7 @@ package com.apppartner.androidprogrammertest;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.view.Menu;
 
 public class LoginActivity extends ActionBarActivity
 {
@@ -18,5 +19,10 @@ public class LoginActivity extends ActionBarActivity
     {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        return super.onCreateOptionsMenu(menu);
     }
 }
