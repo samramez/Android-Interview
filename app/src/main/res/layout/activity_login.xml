@@ -15,7 +15,7 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/editText"
+        android:id="@+id/loginEditText"
         android:layout_gravity="center_horizontal"
         android:background="@drawable/graphic_input"
         android:layout_marginBottom="20dp"
@@ -28,16 +28,29 @@
         android:layout_height="wrap_content"
         android:inputType="textPassword"
         android:ems="10"
-        android:id="@+id/editText2"
+        android:id="@+id/passEditText"
         android:layout_gravity="center_horizontal"
         android:background="@drawable/graphic_input"
-        android:layout_marginBottom="20dp"
-/>
+        android:layout_marginBottom="20dp"/>
 
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/imageButton"
         android:layout_gravity="center_horizontal"
-        android:background="@drawable/btn_login" />
+        android:background="@drawable/btn_login"
+        android:onClick="onLoginClick"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:id="@+id/resultTextView"
+        android:text=" "
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/graphic_input"
+        android:visibility="invisible"/>
+
+
 </LinearLayout>
