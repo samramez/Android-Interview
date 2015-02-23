@@ -6,16 +6,10 @@
         android:fromAlpha="1"
         android:toAlpha="0.0009"
         android:interpolator="@android:anim/accelerate_interpolator"
-        android:duration="4000"
+        android:duration="2000"
+        android:repeatCount="1"
+        android:repeatMode="reverse"
         />
-
-    <!--<alpha-->
-        <!--android:fromAlpha="1.0"-->
-        <!--android:interpolator="@android:anim/accelerate_interpolator"-->
-        <!--android:toAlpha="0.0"-->
-        <!--android:duration="4000"-->
-        <!--/>-->
-
 
 
 </set>
