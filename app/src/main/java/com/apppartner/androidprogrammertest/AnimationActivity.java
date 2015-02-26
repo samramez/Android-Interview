@@ -3,6 +3,7 @@ package com.apppartner.androidprogrammertest;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.Animation;
@@ -25,6 +26,11 @@ public class AnimationActivity extends ActionBarActivity implements OnTouchListe
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_animation);
+
+        // Enabling Back Button in the ActionBar
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setIcon(R.drawable.btn_back);
+        getSupportActionBar().setHomeButtonEnabled(true);
 
         appPartnerImageView = (ImageView) findViewById(R.id.appPartnerImageView);
         fadeButton = (ImageButton) findViewById(R.id.fadeButton);
@@ -82,15 +88,16 @@ public class AnimationActivity extends ActionBarActivity implements OnTouchListe
         startActivity(intent);
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+        if (id == android.R.id.home) onBackPressed();
+        return super.onOptionsItemSelected(item);
+    }
 
 
-//    public void onClickFade() {
-//
-//        fadeButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                appPartnerImageView.startAnimation(animationFadeIn);
-//            }
-//        });
-//    }
+
 }

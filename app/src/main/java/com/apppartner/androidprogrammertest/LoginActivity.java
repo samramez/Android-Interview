@@ -35,6 +35,12 @@ public class LoginActivity extends ActionBarActivity
 
         setContentView(R.layout.activity_login);
 
+        // Enabling Back Button in the ActionBar
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setIcon(R.drawable.btn_back);
+
+
         // Initializing Views
         loginEditText = (EditText) findViewById(R.id.loginEditText);
         passEditText = (EditText) findViewById(R.id.passEditText);
@@ -64,9 +70,7 @@ public class LoginActivity extends ActionBarActivity
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            return true;
-        }
+        if (id == android.R.id.home) onBackPressed();
         return super.onOptionsItemSelected(item);
     }
 
