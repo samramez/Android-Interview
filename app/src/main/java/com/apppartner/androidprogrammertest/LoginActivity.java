@@ -1,9 +1,12 @@
 package com.apppartner.androidprogrammertest;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.text.method.PasswordTransformationMethod;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -81,20 +84,25 @@ public class LoginActivity extends ActionBarActivity
         String password = passEditText.getText().toString();
 
         // Just fot testing purposes:
-        username = "SuperBoise";
-        password = "qwerty";
+//        username = "SuperBoise";
+//        password = "qwerty";
 
         //String[] login = {username,password};
 
         // Running the AsyncTask function and check if user and pass is right
         AuthUserPass authUserPass = new AuthUserPass();
-        authUserPass.execute(new String[]{username, password});
+        authUserPass.execute(username, password);
     }
+
+
 
     public class AuthUserPass extends AsyncTask<String, Void, String>{
 
         @Override
         protected String doInBackground(String... params) {
+
+            // Counting the performance time
+            long startTime = System.nanoTime();
 
             ArrayList<NameValuePair> postParameters = new ArrayList<NameValuePair>();
             postParameters.add(new BasicNameValuePair("username", params[0] ));
@@ -108,13 +116,21 @@ public class LoginActivity extends ActionBarActivity
                 response = CustomHttpClient.executeHttpPost(url , postParameters);
 
                 res = response;
-                res = res.replaceAll("\\s+","");
+                //res = res.replaceAll("\\s+","");
 
             } catch (Exception e) {
                 e.printStackTrace();
             }
 
-            return res;
+            // Stopping the stopwatch
+            long stopTime = System.nanoTime();
+            long timePeriod =  (stopTime - startTime);
+
+            String apiTime = "API time call is : " + Long.toString(timePeriod) + " miliseconds";
+
+
+
+            return apiTime + "\n" + res;
         }
 
         @Override
@@ -122,12 +138,55 @@ public class LoginActivity extends ActionBarActivity
 
             if(result != null){
 
+
+                if(result.contains("Success")){
+
+                    new AlertDialog.Builder(LoginActivity.this)
+                            .setTitle("Login Successful!")
+                            .setMessage(result)
+                            .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                                    startActivity(intent);                                }
+                            })
+
+                            .setIcon(android.R.drawable.ic_dialog_alert)
+                            .show();
+
+                } else {
+
+                    new AlertDialog.Builder(LoginActivity.this)
+                            .setTitle("Login Failed!")
+                            .setMessage(result)
+                            .setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                    Intent intent = new Intent(LoginActivity.this, LoginActivity.class);
+                                    startActivity(intent);
+                                }
+                            })
+
+                            .setIcon(android.R.drawable.ic_dialog_alert)
+                            .show();
+
+                }
+
+
                 // Showing the return from the server
-                resultTextView.setText(result);
-                resultTextView.setVisibility(View.VISIBLE);
+                //resultTextView.setText(result);
+                //resultTextView.setVisibility(View.VISIBLE);
             }
         }
 
 
+    }
+
+
+    public void onClickUsernameEditText(View view) {
+        loginEditText.setText("");
+    }
+
+    public void onClickPassEditText(View view) {
+        passEditText.setText("");
+        passEditText.setTransformationMethod(PasswordTransformationMethod.getInstance());
     }
 }
