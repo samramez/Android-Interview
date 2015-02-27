@@ -34,6 +34,7 @@ public class ChatActivity extends ActionBarActivity
         setContentView(R.layout.activity_chat);
 
         // Enabling Back Button in the ActionBar
+        getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setIcon(R.drawable.btn_back);
 

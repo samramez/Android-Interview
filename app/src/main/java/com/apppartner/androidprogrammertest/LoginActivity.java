@@ -73,8 +73,12 @@ public class LoginActivity extends ActionBarActivity
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-        if (id == android.R.id.home) onBackPressed();
-        return super.onOptionsItemSelected(item);
+        if (id == android.R.id.home){
+            onBackPressed();
+            return true;
+        }
+        else
+            return super.onOptionsItemSelected(item);
     }
 
     public void onLoginClick(View view) {
@@ -126,7 +130,7 @@ public class LoginActivity extends ActionBarActivity
             long stopTime = System.nanoTime();
             long timePeriod =  (stopTime - startTime);
 
-            String apiTime = "API time call is : " + Long.toString(timePeriod) + " miliseconds";
+            String apiTime = "API call time : " + Long.toString(timePeriod) + " miliseconds" + "\n" ;
 
 
 

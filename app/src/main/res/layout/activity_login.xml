@@ -28,8 +28,7 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:text=" paasword"
+        android:text=" password"
         android:textSize="30dp"
         android:id="@+id/passEditText"
         android:layout_gravity="center_horizontal"

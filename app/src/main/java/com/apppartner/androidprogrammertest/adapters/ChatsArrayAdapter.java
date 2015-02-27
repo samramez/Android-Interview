@@ -43,6 +43,7 @@ public class ChatsArrayAdapter extends ArrayAdapter<ChatData>
         String owner = chatData.username;
         int picOwner = whosePicture(owner);
 
+
         chatCell.usernameTextView.setText(chatData.username);
         chatCell.messageTextView.setText(chatData.message);
         chatCell.userImageView.setBackgroundResource(picOwner);

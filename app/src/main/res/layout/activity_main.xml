@@ -14,7 +14,7 @@
         android:text="@string/coding_tasks"
         android:textColor="#ffe9fff4"
         android:id="@+id/mainTextView"
-        android:textSize="35sp"/>
+        android:textSize="22pt"/>
     <ImageButton
         style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
